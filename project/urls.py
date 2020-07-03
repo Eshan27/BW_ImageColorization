@@ -17,10 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from bw2color import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path(r'^$', views.model_form_upload),
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
                               document_root=settings.MEDIA_ROOT)
+
+urlpatterns = [
+    path(r'^$', views.model_form_upload),
+]

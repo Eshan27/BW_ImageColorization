@@ -1,5 +1,5 @@
 from django import forms
-from uploads.core.models import Document
+from uploads.bw2color.models import Document
 
 class DocumentForm(forms.ModelForm):
     class Meta:
