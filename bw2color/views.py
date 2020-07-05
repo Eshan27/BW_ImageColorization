@@ -1,11 +1,16 @@
-def model_form_upload(request):
+from django.shortcuts import render
+from .forms import ImageForm
+
+def image_upload_view(request):
     if request.method == 'POST':
-        form = DocumentForm(request.POST, request.FILES)
+        form = ImageForm(request.POST, request.FILES)
+        
         if form.is_valid():
             form.save()
-            return redirect('home')
+            img_obj = form.instance
+            return render(request, 'index.html', {'form':form, 'img_obj': img_obj})
+
     else:
-        form = DocumentForm()
-    return render(request, 'index.html', {
-        'form': form
-    })
+        form = ImageForm()
+
+    return render(request, 'index.html', {'form':form})
